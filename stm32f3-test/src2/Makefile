@@ -5,10 +5,10 @@ LD_SCRIPT = linker.ld
 MCU_SPEC = cortex-m4
 
 # Define extra include directories
-INC = -I/Users/Andrey/Documents/STM/stm32f3-test/src2/include
+INC = -I/Users/Andrey/Documents/GitHub/stm/stm32f3-test/src2/include
 
 # Toolchain deffinitions
-TOOLCHAIN = /Users/Andrey/Documents/STM/gcc-arm-none-eabi-10-2020-q4-major
+TOOLCHAIN = /Users/Andrey/Documents/GitHub/stm/gcc-arm-none-eabi-10-2020-q4-major
 CC = $(TOOLCHAIN)/bin/arm-none-eabi-gcc
 AS = $(TOOLCHAIN)/bin/arm-none-eabi-as
 LD = $(TOOLCHAIN)/bin/arm-none-eabi-ld
