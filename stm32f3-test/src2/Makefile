@@ -18,6 +18,9 @@ OS = $(TOOLCHAIN)/bin/arm-none-eabi-size
 DB = $(TOOLCHAIN)/bin/arm-none-eabi-gdb
 NM = $(TOOLCHAIN)/bin/arm-none-eabi-nm
 
+# GDB path
+# /Users/Andrey/Documents/GitHub/stm/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-gdb
+
 # Assembly directives
 ASFLAGS += -c
 ASFLAGS += -mcpu=$(MCU_SPEC)
@@ -28,7 +31,6 @@ ASFLAGS += -Wall
 CFLAGS += -mcpu=$(MCU_SPEC)
 CFLAGS += -mthumb
 CFLAGS += -Wall
-CFLAGS += $(INC)
 CFLAGS += -g
 # Set system to ignore semihosted calls
 CFLAGS += --specs=nosys.specs
@@ -45,7 +47,7 @@ LFLAGS += -T$(LSCRIPT)
 
 AS_SRC = ./startup_stm32f30x.s
 SYS_SRC = ./system_stm32f30x.c
-C_SRC = ./main.c
+C_SRC = ./main.c ./led.c ./exti.c
 
 # Vecor table and startup
 OBJS = $(AS_SRC:.s=.o)
@@ -59,7 +61,7 @@ all: $(TARGET).bin
 	$(CC) -x assembler-with-cpp $(ASFLAGS) $< -o $@
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $(INCLUDE) $< -o $@
+	$(CC) -c $(CFLAGS) $(INC) $< -o $@
 
 $(TARGET).elf: $(OBJS)
 	$(CC) $^ $(LFLAGS) -o $@
