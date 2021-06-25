@@ -18,9 +18,6 @@ OS = $(TOOLCHAIN)/bin/arm-none-eabi-size
 DB = $(TOOLCHAIN)/bin/arm-none-eabi-gdb
 NM = $(TOOLCHAIN)/bin/arm-none-eabi-nm
 
-# GDB path
-# /Users/Andrey/Documents/GitHub/stm/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-gdb
-
 # Assembly directives
 ASFLAGS += -c
 ASFLAGS += -mcpu=$(MCU_SPEC)
@@ -47,7 +44,7 @@ LFLAGS += -T$(LSCRIPT)
 
 AS_SRC = ./startup_stm32f30x.s
 SYS_SRC = ./system_stm32f30x.c
-C_SRC = ./main.c ./led.c ./exti.c
+C_SRC = ./main.c ./gpio.c ./led.c ./exti.c
 
 # Vecor table and startup
 OBJS = $(AS_SRC:.s=.o)
@@ -74,3 +71,18 @@ $(TARGET).bin: $(TARGET).elf
 clean:
 	rm -f $(OBJS)
 	rm -f $(TARGET).elf
+
+# Usefull commands
+
+# Debug
+
+# start ST-LINK				st-util
+# start GDB 				/Users/Andrey/Documents/GitHub/stm/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-gdb main.elf
+# set target 				target extended-remote :4242
+# load elf 					load
+# continue executing		continue
+# get register values		info registers
+
+# Flash
+
+# flash bin to board		st-flash write main.bin 0x08000000     

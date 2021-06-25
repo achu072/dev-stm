@@ -5,4 +5,6 @@
 #include "stm32f3_discovery.h"
 #include "stm32f30x_it.h"
 
+extern volatile uint8_t select;
+
 #endif /* __COMMON_H */

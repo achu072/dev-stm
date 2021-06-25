@@ -1,30 +1,43 @@
 #include "main.h"
 #include "common.h"
+#include "gpio.h"
 #include "exti.h"
+#include "led.h"
 
 int main(void){
-
-    // Enable clock for GPIOE & GPIOA
-    RCC->AHBENR |= RCC_AHBENR_GPIOEEN;
-    RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
-
-    // Initialise GPIOE pins
-    // Set PE9 (led) to output mode
-    GPIOE->MODER |= (1 << 18);
-    GPIOE->MODER &= ~(1 << 19);
-    // Set PA0 (button) to input mode
-    GPIOA->MODER &= ~(1 << 0);
-    GPIOA->MODER &= ~(1 << 1);
-    // Set PE9 to output push-pull
-    GPIOE->OTYPER &= ~(1 << 9);
-    // Set PA0 to pull-up
-    GPIOE->PUPDR &= ~(1 << 18);
-    GPIOE->PUPDR |= (1 << 19);
-
-    // Enable interrupt on PE9
+    GPIO_PORT_A_clk_init();
+    GPIO_PORT_E_clk_init();
+    GPIO_init();
     EXTI_init();
 
     while(1){
-        ;
+        switch(select) {
+            case 0:
+                led_on(LD3);
+                break;
+            case 1:
+                led_on(LD4);
+                break;
+            case 2:
+                led_on(LD5);
+                break;
+            case 3:
+                led_on(LD6);
+                break;
+            case 4:
+                led_on(LD7);
+                break;
+            case 5:
+                led_on(LD8);
+                break;
+            case 6:
+                led_on(LD9);
+                break;
+            case 7:
+                led_on(LD10);
+                break;
+            default:
+                break;
+        }
     }
 }
