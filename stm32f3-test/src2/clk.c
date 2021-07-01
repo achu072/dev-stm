@@ -1,6 +1,8 @@
 #include "common.h"
 #include "clk.h"
 
+uint32_t core_clock_hz = 0;
+
 // Intitalise system clock 
 void CLK_init(void) {
     // Set up wait states and instruction pre-fetch

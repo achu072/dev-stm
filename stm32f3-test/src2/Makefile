@@ -44,7 +44,7 @@ LFLAGS += -T$(LSCRIPT)
 
 AS_SRC = ./startup_stm32f30x.s
 SYS_SRC = ./system_stm32f30x.c
-C_SRC = ./main.c ./gpio.c ./led.c ./exti.c
+C_SRC = ./main.c ./gpio.c ./led.c ./exti.c ./clk.c ./tim15.c
 
 # Vecor table and startup
 OBJS = $(AS_SRC:.s=.o)

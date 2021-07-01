@@ -26,13 +26,12 @@ void EXTI_init(void) {
 void EXTI0_IRQHandler(void) {
     if (EXTI->PR & (1 << 0)) {
         // Clear interrupt status flag
-            
+        EXTI->PR |= (1 << 0);
+        //Set flag for LED trigger
         if (select == 7) {
             select = 0;
         } else {
             select++;
         }
-
-        EXTI->PR |= (1 << 0);
     }
 }
