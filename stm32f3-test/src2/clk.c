@@ -10,8 +10,8 @@ void CLK_init(void) {
     // Configure PLL
     // Reset PLL register
     RCC->CFGR &= ~(RCC_CFGR_PLLMULL | RCC_CFGR_PLLSRC);
-    // Set PLL to (HSI/2) * 12 = (8/2) * 12 = 48MHz
-    RCC->CFGR |= (RCC_CFGR_PLLSRC_HSI_Div2 | RCC_CFGR_PLLMULL12);
+    // Set PLL to (HSI/2) * 15 = (8/2) * 15 = 60MHz
+    RCC->CFGR |= (RCC_CFGR_PLLSRC_HSI_Div2 | RCC_CFGR_PLLMULL15);
     // Turn on PLL
     RCC->CR |= RCC_CR_PLLON;
     // Wait untill PLL ready
