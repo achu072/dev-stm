@@ -3,8 +3,10 @@
 #include "gpio.h"
 #include "exti.h"
 #include "led.h"
+#include "clk.h"
 
 int main(void){
+    CLK_init();
     GPIO_PORT_A_clk_init();
     GPIO_PORT_E_clk_init();
     GPIO_init();
